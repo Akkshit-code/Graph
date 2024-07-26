@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 class tuple{
@@ -21,12 +20,12 @@ class ShortestdistanceinBinaryMaze {
             }
         }
         distance[source[0]][source[1]]=0;
-        Queue<tuple> q=new LinkedList<>();
-        q.add(new tuple(0,source[0],source[1]));
+        Queue<tuples> q=new LinkedList<>();
+        q.add(new tuples(0,source[0],source[1]));
         int [] row={-1,0,1,0};
         int [] col={0,1,0,-1};
         while (!q.isEmpty()){
-            tuple it=q.peek();
+            tuples it=q.peek();
             int dis=it.first;
             int r=it.second;
             int c=it.third;
@@ -38,7 +37,7 @@ class ShortestdistanceinBinaryMaze {
                     if(newr==destination[0] && newc==destination[1]){
                         return dis+1;
                     }
-                    q.add(new tuple(dis,newr,newc));
+                    q.add(new tuples(dis,newr,newc));
                 }
             }
 
