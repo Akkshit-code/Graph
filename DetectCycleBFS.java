@@ -3,18 +3,18 @@
 //import java.util.Queue;
 //
 //public class DetectCycleBFS{
-//class Pair{
+//class Pairss{
 //    int first ;
 //    int second ;
-//    public Pair(int first, int second){
+//    public Pairss(int first, int second){
 //        this.first= first ;
 //        this.second= second ;
 //    }
 //
 //    public boolean detectcycle(int src, ArrayList<ArrayList<Integer>> adj, boolean [] visited){
 //        visited[src]=true;
-//        Queue<Pair> q=new LinkedList<>();
-//        q.add(new Pair(src,-1));
+//        Queue<Pairss> q=new LinkedList<>();
+//        q.add(new Pairss(src,-1));
 //        while(!q.isEmpty()){
 //            int node=q.peek().first;
 //            int parent=q.peek().second;
@@ -22,7 +22,7 @@
 //            for(int adjacentNode:adj.get(node)){
 //                if(visited[adjacentNode]==false){
 //                    visited[adjacentNode]=true;
-//                    q.add(new Pair(adjacentNode,node));
+//                    q.add(new Pairss(adjacentNode,node));
 //                }
 //                else if(parent!=adjacentNode){
 //                    return true;

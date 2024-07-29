@@ -15,7 +15,7 @@ class DjikstrasAlgorithm {
         //from the source vertex S.
         static int[] dijkstra(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S)
         {
-            PriorityQueue<Pair> pq=new PriorityQueue<Pair>((x,y) -> x.distance-y.distance);
+            PriorityQueue<Pair> pq=new PriorityQueue<Pair>((x, y) -> x.distance-y.distance);
             int [] dist=new int[V];
             for(int i=0;i<V;i++) dist[i]=(int)(1e9);
 

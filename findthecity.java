@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Pairs { // Renamed from Pair to Pairs to match your class definition
+class Pairs { // Renamed from Pairss to Pairs to match your class definition
     int weight, node;
     Pairs(int _weight, int _node) {
         this.weight = _weight;
