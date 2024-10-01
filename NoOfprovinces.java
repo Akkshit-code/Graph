@@ -13,7 +13,6 @@ class NoOfprovvinces {
                 DFS(it, visited, adjls, list);
             }
         }
-        Queue<Integer> q = new LinkedList<>();
     }
 
     public static int numProvinces(ArrayList<ArrayList<Integer>> adj, int V) {

@@ -1,25 +1,26 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class BreadthFirstSearch {
     public static ArrayList<Integer> BFS(int V,ArrayList<ArrayList<Integer>> adj){
-        ArrayList<Integer> bfs=new ArrayList<>();
-        boolean [] visited=new boolean[V];
-        Queue<Integer> q= new LinkedList<>();
+        ArrayList<Integer> list=new ArrayList<>();
+        Queue<Integer> q=new LinkedList<>();
+        int [] visited=new int[V];
         q.add(0);
-        visited[0]=true;
+        visited[0]=1;
         while (!q.isEmpty()){
-            int node= q.poll();
-            bfs.add(node);
+            int node=q.poll();
+            list.add(node);
             for (int it:adj.get(node)){
-                if (visited[it]==false){
-                    visited[it]=true;
+                if(visited[it]==0){
+                    visited[it]=1;
                     q.add(it);
                 }
             }
         }
-        return bfs;
+        return list;
 
     }
     public static void main(String[] args) {
