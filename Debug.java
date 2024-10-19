@@ -1,46 +1,48 @@
 import java.util.*;
+class Pair{
+    int first,second,weight;
+    Pair(int first,int second,int weight){
+        this.first=first;
+        this.second=second;
+        this.weight=weight;
+    }
+}
 class Debug {
-    public static String customSortString(String order, String s) {
-        int n1=order.length();
-        int n2=s.length();
-        int i=0;
-        int j=0;
-        char [] ch1=order.toCharArray();
-        HashMap<Character,Integer> hm=new HashMap<>();
-        for(int k=0;k<n2;k++){
-            if(hm.containsKey(s.charAt(k))){
-                hm.put(s.charAt(k),hm.get(s.charAt(k))+1);
-            }
-            else
-                hm.put(s.charAt(k),1);
-        }
-        char [] ch2=s.toCharArray();
-        j = 0;
-        while(i<n1 && j<n2){
-            if(hm.containsKey(ch1[i])){
-                if(ch1[i]!=ch2[j]){
-                    if(hm.get(ch1[i])>1) {
-                        while (hm.get(ch1[i]) > 0) {
-                            ch2[j++] = ch1[i];
-                            hm.put(ch1[i], hm.get(ch1[i]) - 1);
-                        }
-                    }
-                    else if(hm.get(ch1[i])<=1){
-                        ch2[j]=ch1[i];
-                        hm.put(ch1[i], hm.get(ch1[i]) - 1);
-                        i++;
-                        j++;
-                    }
-                } else {
-                    i++;
-                    j++;
-                }
+    public static int findCheapestPrice(int n, int[][] flights, int src, int dest, int k) {
+        PriorityQueue<Pair> pq=new PriorityQueue<>((a,b)->a.weight-b.weight);
+        int [] distance=new int[n];
+        for (int i=0;i<n;i++) distance[i]=Integer.MAX_VALUE;
+        pq.add(new Pair(0,0,0));
+        distance[src]=0;
+        while (!pq.isEmpty()){
+            Pair node=pq.poll();
+            int first=node.first;
+            int second=node.second;
+            int weight=node.weight;
+            if(distance[first]+weight<distance[second]){
+                distance[second]=distance[first]+weight;
+                if(second==dest) return distance[second];
             }
         }
-        return new String(ch2);
+        return -1;
     }
+        public static void main(String[] args) {
+            Debug obj = new Debug();
 
-    public static void main(String[] args) {
-        System.out.println(customSortString("bcafg","abcd"));
-    }
+            int n = 4; // Number of cities (nodes)
+            int[][] flights = {
+                    {0, 1, 100},
+                    {1, 2, 100},
+                    {0, 2, 500},
+                    {2, 3, 100}
+            }; // Directed graph with edge weights
+
+            int src = 0; // Source city
+            int dest = 3; // Destination city
+            int k = 1; // Maximum stops
+
+            int result = obj.findCheapestPrice(n, flights, src, dest, k);
+            System.out.println("Cheapest Price: " + result);
+        }
+
 }
